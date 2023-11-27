@@ -177,7 +177,6 @@ import amazonPaymentsModal from '@/components/payments/amazonModal';
 import paymentsSuccessModal from '@/components/payments/successModal';
 import subCancelModalConfirm from '@/components/payments/cancelModalConfirm';
 import subCanceledModal from '@/components/payments/canceledModal';
-import externalLinkModal from '@/components/externalLinkModal.vue';
 
 import spellsMixin from '@/mixins/spells';
 import {
@@ -214,7 +213,6 @@ export default {
     subCanceledModal,
     bugReportModal,
     bugReportSuccessModal,
-    externalLinkModal,
   },
   mixins: [notifications, spellsMixin],
   data () {
