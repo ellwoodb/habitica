@@ -35,7 +35,6 @@
       <sub-canceled-modal v-if="isUserLoaded" />
       <bug-report-modal v-if="isUserLoaded" />
       <bug-report-success-modal v-if="isUserLoaded" />
-      <external-link-modal />
       <birthday-modal />
       <snackbars />
       <router-view v-if="!isUserLoggedIn || isStaticPage" />
