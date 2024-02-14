@@ -381,7 +381,7 @@ export const UserSchema = new Schema({
       $type: Schema.Types.Mixed,
       default: () => ({}),
     },
-    currentPet: String, // Cactus-Desert
+    currentPet: { $type: String, default: '' }, // Cactus-Desert
 
     // eggs: {
     //  'PandaCub': 0, // 0 indicates "doesn't own"
@@ -419,7 +419,7 @@ export const UserSchema = new Schema({
       $type: Schema.Types.Mixed,
       default: () => ({}),
     },
-    currentMount: String,
+    currentMount: { $type: String, default: '' }, // Cactus-Desert
 
     // Quests: {
     //  'boss_0': 0, // 0 indicates "doesn't own"
@@ -576,6 +576,7 @@ export const UserSchema = new Schema({
       onboarding: { $type: Boolean, default: true },
       majorUpdates: { $type: Boolean, default: true },
       subscriptionReminders: { $type: Boolean, default: true },
+      contentRelease: { $type: Boolean, default: true },
     },
     pushNotifications: {
       unsubscribeFromAll: { $type: Boolean, default: false },
@@ -592,6 +593,7 @@ export const UserSchema = new Schema({
       mentionJoinedGuild: { $type: Boolean, default: true },
       mentionUnjoinedGuild: { $type: Boolean, default: true },
       partyActivity: { $type: Boolean, default: true },
+      contentRelease: { $type: Boolean, default: true },
     },
     suppressModals: {
       levelUp: { $type: Boolean, default: false },

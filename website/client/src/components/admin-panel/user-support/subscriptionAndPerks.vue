@@ -21,22 +21,44 @@
           Group plan ID:
           <strong>{{ hero.purchased.plan.owner }}</strong>
         </div>
-        <div v-if="hero.purchased.plan.dateCreated">
-          Creation date:
-          <strong>{{ dateFormat(hero.purchased.plan.dateCreated) }}</strong>
+        <div
+          v-if="hero.purchased.plan.dateCreated"
+          class="form-inline"
+        >
+          <label>
+            Creation date:
+            <input
+              v-model="hero.purchased.plan.dateCreated"
+              class="form-control"
+              type="text"
+            > <strong class="ml-2">{{ dateFormat(hero.purchased.plan.dateCreated) }}</strong>
+          </label>
         </div>
-        <div v-if="hero.purchased.plan.dateCurrentTypeCreated">
-          Start date for current subscription type:
-          <strong>{{ dateFormat(hero.purchased.plan.dateCurrentTypeCreated) }}</strong>
+        <div
+          v-if="hero.purchased.plan.dateCurrentTypeCreated"
+          class="form-inline"
+        >
+          <label>
+            Start date for current subscription type:
+            <input
+              v-model="hero.purchased.plan.dateCurrentTypeCreated"
+              class="form-control"
+              type="text"
+            >
+          </label>
+          <strong class="ml-2">{{ dateFormat(hero.purchased.plan.dateCurrentTypeCreated) }}</strong>
         </div>
-        <div>
-          Termination date:
-          <strong
-            v-if="hero.purchased.plan.dateTerminated"
-          >
-            {{ dateFormat(hero.purchased.plan.dateTerminated) }}
-          </strong>
-          <strong v-else> None </strong>
+        <div class="form-inline">
+          <label>
+            Termination date:
+            <div>
+              <input
+                v-model="hero.purchased.plan.dateTerminated"
+                class="form-control"
+                type="text"
+              > <strong class="ml-2">{{ dateFormat(hero.purchased.plan.dateTerminated) }}</strong>
+            </div>
+          </label>
         </div>
         <div class="form-inline">
           <label>
@@ -50,20 +72,28 @@
             >
           </label>
         </div>
-        <div>
-          Perk offset months:
-          <strong>{{ hero.purchased.plan.consecutive.offset }}</strong>
+        <div class="form-inline">
+          <label>
+            Perk offset months:
+            <input
+              v-model="hero.purchased.plan.consecutive.offset"
+              class="form-control"
+              type="number"
+              min="0"
+              step="1"
+            >
+          </label>
         </div>
         <div class="form-inline">
           Perk month count:
           <input
-              v-model="hero.purchased.plan.perkMonthCount"
-              class="form-control"
-              type="number"
-              min="0"
-              max="2"
-              step="1"
-            >
+            v-model="hero.purchased.plan.perkMonthCount"
+            class="form-control"
+            type="number"
+            min="0"
+            max="2"
+            step="1"
+          >
         </div>
         <div>
           Next Mystic Hourglass:
@@ -148,8 +178,8 @@
 
 <script>
 import moment from 'moment';
-import saveHero from '../mixins/saveHero';
 import { getPlanContext } from '@/../../common/script/cron';
+import saveHero from '../mixins/saveHero';
 
 export default {
   mixins: [saveHero],
@@ -173,6 +203,9 @@ export default {
   },
   methods: {
     dateFormat (date) {
+      if (!date) {
+        return '--';
+      }
       return moment(date).format('YYYY/MM/DD');
     },
   },

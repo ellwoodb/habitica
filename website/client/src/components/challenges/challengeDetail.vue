@@ -189,8 +189,9 @@
         <div>
           <button
             class="btn"
-            :disabled="flaggedAndHidden"
-            :class="flaggedAndHidden ? 'disabled btn-disabled' : 'btn-primary'"
+            :disabled="flaggedAndHidden || chatRevocation"
+            :class="flaggedAndHidden || chatRevocation
+              ? 'disabled btn-disabled' : 'btn-primary'"
             @click="cloneChallenge()"
           >
             {{ $t('clone') }}
@@ -280,17 +281,6 @@
     }
   }
 
-  .btn-disabled {
-    background-color: $gray-700;
-    color: $gray-50;
-    box-shadow: none;
-    cursor: arrow;
-
-    &:hover {
-      box-shadow: none;
-    }
-  }
-
   .calendar-icon {
     width: 12px;
     display: inline-block;
@@ -372,6 +362,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import omit from 'lodash/omit';
 import { v4 as uuid } from 'uuid';
 
+import taskDefaults from '@/../../common/script/libs/taskDefaults';
 import { userStateMixin } from '../../mixins/userState';
 import externalLinks from '../../mixins/externalLinks';
 import memberSearchDropdown from '@/components/members/memberSearchDropdown';
@@ -387,7 +378,6 @@ import reportChallengeModal from './reportChallengeModal';
 import sidebarSection from '../sidebarSection';
 import userLink from '../userLink';
 import groupLink from '../groupLink';
-import taskDefaults from '@/../../common/script/libs/taskDefaults';
 
 import gemIcon from '@/assets/svg/gem.svg';
 import memberIcon from '@/assets/svg/member-icon.svg';
@@ -413,6 +403,11 @@ export default {
     groupLink,
   },
   mixins: [challengeMemberSearchMixin, externalLinks, userStateMixin],
+  async beforeRouteUpdate (to, from, next) {
+    this.searchId = to.params.challengeId;
+    await this.loadChallenge();
+    next();
+  },
   props: ['challengeId'],
   data () {
     return {
@@ -468,6 +463,10 @@ export default {
     flaggedAndHidden () {
       return this.challenge.flagCount > 1;
     },
+    chatRevocation () {
+      return this.user.flags.chatRevoked
+        && this.challenge.group && this.challenge.group.name === 'Tavern';
+    },
   },
   watch: {
     'challenge.name': {
@@ -486,11 +485,6 @@ export default {
   },
   updated () {
     this.handleExternalLinks();
-  },
-  async beforeRouteUpdate (to, from, next) {
-    this.searchId = to.params.challengeId;
-    await this.loadChallenge();
-    next();
   },
   methods: {
     cleanUpTask (task) {

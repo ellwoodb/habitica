@@ -78,16 +78,16 @@ const bundles = {
   winterQuests: {
     key: 'winterQuests',
     text: t('winterQuestsText'),
-    notes: t('winterQuestsNotes', { date: moment(EVENTS.winter2023.end).format('LL') }),
+    notes: t('winterQuestsNotes', { date: moment(EVENTS.winter2024.end).format('LL') }),
     addlNotes: t('evilSantaAddlNotes'),
     bundleKeys: [
       'evilsanta',
       'evilsanta2',
       'penguin',
     ],
-    event: EVENTS.winter2023,
+    event: EVENTS.winter2024,
     canBuy () {
-      return moment().isBetween(EVENTS.winter2023.start, EVENTS.winter2023.end);
+      return moment().isBetween(EVENTS.winter2024.start, EVENTS.winter2024.end);
     },
     type: 'quests',
     value: 7,
@@ -189,15 +189,15 @@ const bundles = {
   mythicalMarvels: {
     key: 'mythicalMarvels',
     text: t('mythicalMarvelsText'),
-    notes: t('mythicalMarvelsNotes', { date: moment(EVENTS.bundle202302.end).format('LL') }),
+    notes: t('mythicalMarvelsNotes', { date: moment(EVENTS.bundle202402.end).format('LL') }),
     bundleKeys: [
       'unicorn',
       'seaserpent',
       'gryphon',
     ],
-    event: EVENTS.bundle202302,
+    event: EVENTS.bundle202402,
     canBuy () {
-      return moment().isBetween(EVENTS.bundle202302.start, EVENTS.bundle202302.end);
+      return moment().isBetween(EVENTS.bundle202402.start, EVENTS.bundle202402.end);
     },
     type: 'quests',
     value: 7,

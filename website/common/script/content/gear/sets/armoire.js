@@ -444,6 +444,24 @@ const armor = {
     str: 10,
     set: 'karateSet',
   },
+  greenFluffTrimmedCoat: {
+    str: 8,
+    int: 8,
+    set: 'greenTrapper',
+  },
+  schoolUniformSkirt: {
+    int: 5,
+    set: 'schoolUniform',
+  },
+  schoolUniformPants: {
+    int: 5,
+    set: 'schoolUniform',
+  },
+  softWhiteSuit: {
+    con: 7,
+    per: 10,
+    set: 'whiteLoungeWear',
+  },
 };
 
 const body = {
@@ -930,6 +948,17 @@ const head = {
     con: 3,
     set: 'somethingSpooky',
   },
+  greenTrapperHat: {
+    con: 6,
+    per: 6,
+    set: 'greenTrapper',
+  },
+  whiteFloppyHat: {
+    str: 5,
+    int: 5,
+    con: 5,
+    set: 'whiteLoungeWear',
+  },
 };
 
 const shield = {
@@ -1252,6 +1281,15 @@ const shield = {
   saucepan: {
     per: 10,
     set: 'cookingImplementsTwo',
+  },
+  trustyPencil: {
+    int: 10,
+    set: 'schoolUniform',
+  },
+  softWhitePillow: {
+    int: 6,
+    per: 6,
+    set: 'whiteLoungeWear',
   },
 };
 
@@ -1718,11 +1756,18 @@ const weapon = {
     str: 10,
     set: 'cookingImplementsTwo',
   },
+  scholarlyTextbooks: {
+    int: 10,
+    set: 'schoolUniform',
+  },
 };
 
 const releaseDates = {
   somethingSpooky: '2023-10-10T08:00-04:00',
   cookingImplementsTwo: '2023-11-07T08:00-05:00',
+  greenTrapper: '2023-12-05T08:00-05:00',
+  schoolUniform: '2024-01-04T08:00-05:00',
+  whiteLoungeWear: '2024-02-06T08:00-05:00',
 };
 
 forEach({
@@ -1764,6 +1809,9 @@ forEach({
       text: t(`${setKey}Armoire${upperFirst(gearKey)}Text`),
       value: 100,
     });
+    if (gearItem.released === false) {
+      delete set[gearKey];
+    }
   });
 });
 

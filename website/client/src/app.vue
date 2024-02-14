@@ -188,7 +188,6 @@ import {
 const bugReportModal = () => import(/* webpackChunkName: "bug-report-modal" */'@/components/bugReportModal');
 const bugReportSuccessModal = () => import(/* webpackChunkName: "bug-report-success-modal" */'@/components/bugReportSuccessModal');
 
-
 const COMMUNITY_MANAGER_EMAIL = process.env.EMAILS_COMMUNITY_MANAGER_EMAIL; // eslint-disable-line
 
 export default {
@@ -423,7 +422,8 @@ export default {
         this.$store.state.isUserLoaded = true;
         Analytics.setUser();
         Analytics.updateUser();
-        return axios.get('/api/v4/i18n/browser-script',
+        return axios.get(
+          '/api/v4/i18n/browser-script',
           {
             language: this.user.preferences.language,
             headers: {
@@ -431,7 +431,8 @@ export default {
               Pragma: 'no-cache',
               Expires: '0',
             },
-          });
+          },
+        );
       }).then(() => {
         const i18nData = window && window['habitica-i18n'];
         this.$loadLocale(i18nData);

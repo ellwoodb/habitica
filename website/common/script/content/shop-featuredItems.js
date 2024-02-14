@@ -3,9 +3,11 @@ import { EVENTS } from './constants';
 // Magic Hatching Potions are configured like this:
 // type: 'premiumHatchingPotion',  // note no "s" at the end
 // path: 'premiumHatchingPotions.Rainbow',
+
+// hatching potions and food names should be capitalized lest you break the market
 const featuredItems = {
   market () {
-    if (moment().isBetween(EVENTS.potions202311.start, EVENTS.potions202311.end)) {
+    if (moment().isBetween(EVENTS.potions202402.start, EVENTS.potions202402.end)) {
       return [
         {
           type: 'armoire',
@@ -13,15 +15,15 @@ const featuredItems = {
         },
         {
           type: 'premiumHatchingPotion',
-          path: 'premiumHatchingPotions.AutumnLeaf',
+          path: 'premiumHatchingPotions.RoseGold',
         },
         {
           type: 'premiumHatchingPotion',
-          path: 'premiumHatchingPotions.Ember',
+          path: 'premiumHatchingPotions.Cupid',
         },
         {
-          type: 'premiumHatchingPotion',
-          path: 'premiumHatchingPotions.Frost',
+          type: 'hatchingPotions',
+          path: 'hatchingPotions.Red',
         },
       ];
     }
@@ -32,11 +34,11 @@ const featuredItems = {
       },
       {
         type: 'food',
-        path: 'food.RottenMeat',
+        path: 'food.Chocolate',
       },
       {
         type: 'hatchingPotions',
-        path: 'hatchingPotions.Zombie',
+        path: 'hatchingPotions.Desert',
       },
       {
         type: 'eggs',
@@ -45,19 +47,19 @@ const featuredItems = {
     ];
   },
   quests () {
-    if (moment().isBetween(EVENTS.bundle202311.start, EVENTS.bundle202311.end)) {
+    if (moment().isBetween(EVENTS.bundle202402.start, EVENTS.bundle202402.end)) {
       return [
         {
           type: 'bundles',
-          path: 'bundles.oddballs',
+          path: 'bundles.mythicalMarvels',
         },
         {
           type: 'quests',
-          path: 'quests.gryphon',
+          path: 'quests.nudibranch',
         },
         {
           type: 'quests',
-          path: 'quests.armadillo',
+          path: 'quests.axolotl',
         },
       ];
     }
@@ -73,11 +75,11 @@ const featuredItems = {
       },
       {
         type: 'quests',
-        path: 'quests.axolotl',
+        path: 'quests.slime',
       },
     ];
   },
-  seasonal: 'fall2017TrickOrTreatSet',
+  seasonal: 'winter2021WinterMoonMageSet',
   timeTravelers: [
     // TODO
   ],

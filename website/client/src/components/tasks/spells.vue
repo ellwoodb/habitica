@@ -69,7 +69,7 @@
               <div
                 class="spell-border"
                 :class="{ disabled: spellDisabled(key) || user.stats.lvl < skill.lvl,
-                 'insufficient-mana': user.stats.mp < skill.mana }"
+                          'insufficient-mana': user.stats.mp < skill.mana }"
               >
                 <div
                   class="spell"
@@ -448,8 +448,10 @@ export default {
       this.$store.state.spellOptions.spellDrawOpen = newState;
 
       if (newState) {
-        setLocalSetting(CONSTANTS.keyConstants.SPELL_DRAWER_STATE,
-          CONSTANTS.drawerStateValues.DRAWER_OPEN);
+        setLocalSetting(
+          CONSTANTS.keyConstants.SPELL_DRAWER_STATE,
+          CONSTANTS.drawerStateValues.DRAWER_OPEN,
+        );
         return;
       }
 
