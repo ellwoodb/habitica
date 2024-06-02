@@ -33,15 +33,13 @@ services:
       - .:/usr/src/habitica
       - /usr/src/habitica/node_modules
   mongo:
-    image: mongo:4.2.8
+    image: mongo:5.0.23
     networks:
       - habitica
     ports:
       - "27017:27017"
-    command: --replSet rs
     volumes:
       - habitica_db_data:/data/db
-      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 networks:
   habitica:
     driver: bridge
