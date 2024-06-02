@@ -61,23 +61,28 @@
 
 <style lang="scss">
 @import '~@/assets/scss/colors.scss';
+
 #external-link-modal {
   &.modal {
     display: flex !important;
   }
+
   .modal-md {
     max-width: 448px;
     min-width: 330px;
     margin: auto;
+
   .modal-close {
     position: absolute;
     right: 12px;
     top: 12px;
     cursor: pointer;
+
     .icon-close {
       width: 16px;
       height: 16px;
       vertical-align: middle;
+
       & svg {
         fill: $yellow-1;
         opacity: 0.75;
@@ -88,9 +93,11 @@
       }
     }
   }
+
   .modal-content {
     background: transparent;
   }
+
   .modal-header {
     justify-content: center;
     padding-top: 32px;
@@ -99,6 +106,7 @@
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
     border-bottom: none;
+
     .exclamation-container {
       width: 64px;
       height: 64px;
@@ -107,24 +115,29 @@
       margin: 0 auto;
       margin-bottom: 16px;
     }
+
     .svg-exclamation {
       width: 8px;
       color: $white;
     }
+
     h2 {
       color: $yellow-1;
       margin-bottom: 16px;
     }
   }
+
   .modal-body {
     padding: 16px 44px 20px 44px;
     background: $white;
+
     .leave-warning-text {
       font-size: 0.875rem;
       line-height: 1.71;
       text-align: center;
       margin-top:24px;
     }
+
     .skip-modal {
       color: $gray-100;
       font-size: 0.75rem;
@@ -134,6 +147,7 @@
       // padding-bottom: 24px;
     }
   }
+
     .modal-footer {
       background: $white;
       border-bottom-right-radius: 8px;
@@ -150,6 +164,7 @@
       margin-top:16px;
       margin-bottom: 8px;
       text-align: center;
+
       &:hover {
         text-decoration: underline;
       }
@@ -161,6 +176,7 @@
 <script>
 import exclamationIcon from '@/assets/svg/exclamation.svg';
 import closeIcon from '@/assets/svg/new-close.svg';
+
 export default {
   data () {
     return {
